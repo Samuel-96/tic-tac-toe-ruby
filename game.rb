@@ -33,7 +33,10 @@ class Game
         until @tablero.recibir_marcador(pos, @jugador_activo.marcador) do
           pp "La posicion #{pos+1} está ocupada o es inválida, elige otra: "
           pos = gets.chomp.to_i - 1
-
+          until pos >= 0 && pos <= 8 do
+            puts "Número erróneo. Selecciona una posicion donde poner #{@jugador_activo.marcador} [de la 1 a la 8]: "
+            pos = gets.chomp.to_i - 1
+          end
         end
       end
       @contador_turnos += 1
